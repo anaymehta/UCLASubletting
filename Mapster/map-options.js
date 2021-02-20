@@ -10,7 +10,7 @@
         //These values are taken from the google maps API page, I didn't define them myself                                                                                          
         scrollwheel: false,
         draggable: true,
-        mapTypeId: google.maps.MapTypeId.HYBRID,
+        mapTypeId: google.maps.MapTypeId.ROADMAP,
         maxZoom: 20,
         minZoom: 9,
         zoomControl: true,

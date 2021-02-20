@@ -6,4 +6,16 @@
     //Creates our map
     element = document.getElementById('map-canvas');
     map = mapster.create(element, options);
+    map.addMarker({
+	lat: 37.7,
+	lng: -122,
+	draggable: true,
+	id: 1,
+	event: {
+	    name: 'click',
+	    callback: function() {
+		alert("I'm clicked!");
+	    }
+	}
+    });
 }(window, window.Mapster || (window.Mapster = {})));

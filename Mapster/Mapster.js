@@ -14,11 +14,31 @@
 	    or we could (if we use it often) just define it here
 	    */
 	    //Links an arbitrary event to an arbitrary callback
-	    _on: function(event, callback) {
+	    _on: function(opts) {
 		var self = this;
-		google.maps.event.addListener(this.gMap, event, function(e) {
-		    callback.call(self, e);
+		google.maps.event.addListener(opts.obj, opts.event, function(e) {
+		    opts.callback.call(self, e);
 		}); 
+	    },
+	    //Creates a marker on the map, with arbitrary options
+	    _createMarker: function(opts) {
+		opts.map= this.gMap;
+		return new google.maps.Marker(opts);
+	    },
+	    addMarker: function(opts) {
+		var marker;
+		opts.position = {
+		    lat: opts.lat,
+		    lng: opts.lng
+		}
+		marker = this._createMarker(opts);
+		if (opts.event) {
+		    this._on({
+			obj: marker,
+			event: opts.event.name,
+			callback: opts.event.callback,
+		    });
+		}
 	    }
 	};
 	return Mapster;

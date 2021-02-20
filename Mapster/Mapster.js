@@ -13,6 +13,13 @@
 	    We define our functions on mapster here. We could either call these functions from the google API
 	    or we could (if we use it often) just define it here
 	    */
+	    //Links an arbitrary event to an arbitrary callback
+	    _on: function(event, callback) {
+		var self = this;
+		google.maps.event.addListener(this.gMap, event, function(e) {
+		    callback.call(self, e);
+		}); 
+	    }
 	};
 	return Mapster;
     }());

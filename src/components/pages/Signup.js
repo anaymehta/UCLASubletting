@@ -6,7 +6,7 @@ function Signup() {
     <form>
       <input
         type="text"
-        classnName="username"
+        className="email"
         placeholder="Enter Email"
       ></input>
       <input

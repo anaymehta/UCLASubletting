@@ -7,42 +7,21 @@
     element = document.getElementById('map-canvas');
     map = mapster.create(element, options);
     var marker1 = map.addMarker({
-	lat: 37.7,
-	lng: -122,
+	lat: 34.068,
+	lng: -118.445,
 	icon: 'images/logo.png',
-	content: 'Description here',
-	event: {
+	window: {
+	    img: 'http://i.stack.imgur.com/g672i.png',
+	    str: 'This is a house that costs 100 million dollats hahaha get fucked',
+	}
+	//content: "<img src='http://i.stack.imgur.com/g672i.png'><p>This is a house that costs 100 million dollats hahaha get fucked<//p>",
+	//content: 'This is a house that costs 100 million dollars hahaha get fucked',
+	/*event: {
 	    name: 'click',
 	    callback: function() {
 		alert("I'm clicked!");
 	    }
-	}
+	}*/
     });
-    var marker2 = map.addMarker({
-	lat: 37.9,
-	lng: -122,
-	icon: 'images/logo.png',
-	event: {
-	    name: 'click',
-	    callback: function() {
-		alert("Clicked!");
-	    }
-	}
-    });
-    var marker3 = map.addMarker({
-	lat: 37.7,
-	lng: -122.2,
-	icon: 'images/logo.png',
-	event: {
-	    name: 'click',
-	    callback: function() {
-		alert("also clicked!");
-	    }
-	}
-    });
-    map._removeMarker(marker2);
-    var found = map.findMarkerByLat(37.7);
-    console.log(found);
-    console.log(map.markers);
     map.restrictBounds(map);
 }(window, window.Mapster || (window.Mapster = {})));

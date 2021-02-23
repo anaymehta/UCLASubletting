@@ -42,15 +42,21 @@
 			callback: opts.event.callback,
 		    });
 		}
-		if (opts.content) {
+		//If we add a content string, it will display in the info box
+		if (opts.window) {
 		    this._on({
 			obj: marker,
 			event: 'click',
 			callback: function() {
 			    var infoWindow = new google.maps.InfoWindow({
-				content: opts.content,
+				content:
+				`<div style="text-align: CENTER">
+                                     <img src=${opts.window.img}">
+                                 </div>
+                                 <p>${opts.window.str}</p>`,
 			    });
-
+			    //Pans to the marker when clicked
+			    marker.getMap().panTo(marker.getPosition());
 			    infoWindow.open(this.gMap, marker);
 			}
 		    })
@@ -90,8 +96,6 @@
 		google.maps.event.addListener(map.gMap, 'drag', function(){
 		    var lat = map.gMap.getCenter().lat();
 		    var lng = map.gMap.getCenter().lng();
-		    console.log(lastValidLat);
-		    console.log(lastValidLng);
 		    if (lat > latMin && lat < latMax && lng > lngMin && lng < lngMax) {
                         lastValidLat = lat;
                         lastValidLng = lng;

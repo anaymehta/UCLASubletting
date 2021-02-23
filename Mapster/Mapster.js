@@ -9,6 +9,7 @@
 	    this.gMap = new google.maps.Map(element, opts);
 	    this.markers = [];
 	}
+
 	Mapster.prototype = {
 	    /*
 	    We define our functions on mapster here. We could either call these functions from the google API
@@ -77,6 +78,29 @@
 			return marker;
 		    }
 		}
+	    },
+	    restrictBounds: function(map) {
+		//Ensures user cannot scroll outside of these bounds
+		lngMin = -118.9452;
+		lngMax = -117.9452;
+		latMin = 34.0189;
+		latMax = 35.0189;
+		var lastValidLat;
+		var lastValidLng;
+		google.maps.event.addListener(map.gMap, 'drag', function(){
+		    var lat = map.gMap.getCenter().lat();
+		    var lng = map.gMap.getCenter().lng();
+		    console.log(lastValidLat);
+		    console.log(lastValidLng);
+		    if (lat > latMin && lat < latMax && lng > lngMin && lng < lngMax) {
+                        lastValidLat = lat;
+                        lastValidLng = lng;
+			lat = map.gMap.getCenter().lat();
+			lng = map.gMap.getCenter().lng();
+                        return;
+                    }
+                    map.gMap.panTo({lat: lastValidLat, lng: lastValidLng});
+		});
 	    }
 	};
 	return Mapster;

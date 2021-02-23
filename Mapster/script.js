@@ -44,4 +44,5 @@
     var found = map.findMarkerByLat(37.7);
     console.log(found);
     console.log(map.markers);
+    map.restrictBounds(map);
 }(window, window.Mapster || (window.Mapster = {})));

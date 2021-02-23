@@ -1,0 +1,2 @@
+TODO:
+Be able to add an image and description to the pop up box... and maybe center when clicked on? Add street view? (look at kashi's variable list) Perhaps also add some functionality where we can change pages by clicking on a hyperlink. Also, create some function to get the lat + lng of a click, or an address.

@@ -1,10 +1,11 @@
 (function(window, google, mapster) {
     mapster.MAP_OPTIONS = {
-        center: {
-            lat: 37.791350,
-            lng: -122.435883,
+	center: {
+	    //Initial conditions
+	    lat: 34.0689,
+            lng: -118.4452,
         },
-        zoom: 10,
+        zoom: 16,
         disableDefaultUI: true,
         //Here, we set some random options for convenience. We can always revert these changes                                                                                       
         //These values are taken from the google maps API page, I didn't define them myself                                                                                          
@@ -12,7 +13,7 @@
         draggable: true,
         mapTypeId: google.maps.MapTypeId.ROADMAP,
         maxZoom: 20,
-        minZoom: 9,
+        minZoom: 12,
         zoomControl: true,
         zoomControlOptions: {
             position: google.maps.ControlPosition.LEFT_BOTTOM,

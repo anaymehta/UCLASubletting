@@ -7,6 +7,8 @@
     var Mapster = (function() {
 	function Mapster(element, opts) {
 	    this.gMap = new google.maps.Map(element, opts);
+	    this.gCoder = new google.maps.Geocoder();
+	    this.lat = 0;
 	    this.markers = [];
 	}
 
@@ -105,7 +107,23 @@
                     }
                     map.gMap.panTo({lat: lastValidLat, lng: lastValidLng});
 		});
+	    },
+	    getLat: function(address) {
+		this.gCoder.geocode({'address': address}, function(results, status) {
+		    if (status == google.maps.GeocoderStatus.OK) {
+			map.addMarker({
+			    lat: results[0].geometry.location.lat(),
+			    lng: results[0].geometry.location.lng(),
+			    icon: 'images/logo.png',
+			    window: {
+				img: 'http://i.stack.imgur.com/g672i.png',
+				str: "Leeell",
+			    }
+			})
+		    }
+		});
 	    }
+	    
 	};
 	return Mapster;
     }());

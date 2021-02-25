@@ -13,6 +13,15 @@ function Listing(props) {
       <p>
         {props.author} is selling: {props.body}
       </p>
+      <p> 
+        {props.beds}B{props.baths}B, {props.sqft} Square Feet
+      </p>
+      <p>
+        Email: {props.email}
+      </p>
+      <p>
+        Phone: {props.phone}
+      </p>
       <p>
         number of likes: {likes}
       </p>

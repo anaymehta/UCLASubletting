@@ -24,12 +24,14 @@
 		    opts.callback.call(self, e);
 		}); 
 	    },
+	    //DONT USE THIS
 	    //Creates a marker on the map, with arbitrary options
 	    _createMarker: function(opts) {
 		opts.map= this.gMap;
 		return new google.maps.Marker(opts);
 	    },
-	    addMarker: function(opts) {
+	    //DONT USE THIS
+	    placeMarker: function(opts) {
 		var marker;
 		opts.position = {
 		    lat: opts.lat,
@@ -65,10 +67,11 @@
 		}
 		return marker;
 	    },
-	    //Adds a marker to the marker array, not to be confused with regular addMarker
+	    //Adds a marker to the marker array, not to be confused with regular addMarker. DONT USE THIS
 	    _addMarker: function(marker) {
 		this.markers.push(marker);
 	    },
+	    //Removes a given marker
 	    _removeMarker: function(marker) {
 		var indexOf = this.markers.indexOf(marker);
 		if (indexOf != -1) {
@@ -87,6 +90,7 @@
 		    }
 		}
 	    },
+	    //User won't be able to pan outside this region
 	    restrictBounds: function(map) {
 		//Ensures user cannot scroll outside of these bounds
 		lngMin = -118.9452;
@@ -108,16 +112,22 @@
                     map.gMap.panTo({lat: lastValidLat, lng: lastValidLng});
 		});
 	    },
-	    getLat: function(address) {
+	    /*
+	    This is the main function we'll use to add a marker. Given an address, 
+	    image, and string, it will create a marker at that address with the
+	    image and string displayed. Also, when the marker is clicked, it will
+	    pan to the marker and center it.
+	    */
+	    addMarker: function(address, img, str) {
 		this.gCoder.geocode({'address': address}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
-			map.addMarker({
+			map.placeMarker({
 			    lat: results[0].geometry.location.lat(),
 			    lng: results[0].geometry.location.lng(),
 			    icon: 'images/logo.png',
 			    window: {
-				img: 'http://i.stack.imgur.com/g672i.png',
-				str: "Leeell",
+				img: img,
+				str: str,
 			    }
 			})
 		    }

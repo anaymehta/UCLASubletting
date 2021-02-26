@@ -1,2 +1,7 @@
-body {
+.emailMsgHidden {
+  display: none;
+}
+
+.emailMsgShown {
+  display: block;
 }

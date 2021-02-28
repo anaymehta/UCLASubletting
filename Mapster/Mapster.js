@@ -55,7 +55,7 @@
 			    var infoWindow = new google.maps.InfoWindow({
 				content:
 				`<div style="text-align: CENTER">
-                                     <img src=${opts.window.img}">
+                                     <img src="${opts.window.img}"'></img>
                                  </div>
                                  <p>${opts.window.str}</p>`,
 			    });
@@ -77,6 +77,22 @@
 		if (indexOf != -1) {
 		    this.markers.splice(indexOf, 1);
 		    marker.setMap(null);
+		}
+	    },
+	    removeMarker: function(address) {
+		var found = false;
+		for (var i = 0; i < this.markers.length; i++)
+		{
+		    if (this.markers[i].address == address)
+		    {
+			found = true;
+			this._removeMarker(this.markers[i]);
+			break;
+		    }
+		}
+		if (!found)
+		{
+		    console.log("Could not find requested marker by address to delete");
 		}
 	    },
 	    //Finds marker by attribute, in this case, lat. In the future, we can change this to be something more useful, like perhaps description
@@ -116,7 +132,8 @@
 	    This is the main function we'll use to add a marker. Given an address, 
 	    image, and string, it will create a marker at that address with the
 	    image and string displayed. Also, when the marker is clicked, it will
-	    pan to the marker and center it.
+	    pan to the marker and center it. Also has a link so we can go to another
+	    page, I have google.com as a placeholder
 	    */
 	    addMarker: function(address, img, str) {
 		this.gCoder.geocode({'address': address}, function(results, status) {
@@ -125,9 +142,10 @@
 			    lat: results[0].geometry.location.lat(),
 			    lng: results[0].geometry.location.lng(),
 			    icon: 'images/logo.png',
+			    address: address,
 			    window: {
 				img: img,
-				str: str,
+				str: `<b>${address}</b></br>` + str + `</br></br><a href="https://www.google.com">Sample Link</a>`,
 			    }
 			})
 		    }

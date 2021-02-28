@@ -8,6 +8,7 @@
     map = mapster.create(element, options);
     map.restrictBounds(map);
 
-    map.addMarker("10740 Dickson Ct, Los Angeles, CA 90095", 'https://s3-media4.fl.yelpcdn.com/bphoto/4NRxlHWP8VeVPuB1WMEpvQ/o.jpg', 'Study here');
+    map.addMarker("10740 Dickson Ct, Los Angeles, CA 90095", 'images/powell.png', 'Study here');
     map.addMarker("Los Angeles, CA 90095",'http://i.stack.imgur.com/g672i.png','Leeeell');
+    
 }(window, window.Mapster || (window.Mapster = {})));

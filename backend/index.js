@@ -65,12 +65,12 @@ app.post('/createListing', function (req, res) {
   //Need to associate listingDoc ObjID with User
   var listings = db.collection('listings');
 
-  createUserDoc().then(() => {
+  createListingDoc().then(() => {
       res.send("Listing Created");
     })
 
   async function createListingDoc() {
-    let listingDoc = await listings.insert({"token": req.body.token, "body": req.body.author, "beds": req.body.beds, "baths": req.body.baths, "sqft": req.body.sqft, "email": req.body.email, "phone": req.body.phone});
+    let listingDoc = await listings.insert({"token": req.body.token, "text": req.body.text, "beds": req.body.beds, "baths": req.body.baths, "sqft": req.body.sqft, "email": req.body.email, "phone": req.body.phone});
     return 0
   }
 

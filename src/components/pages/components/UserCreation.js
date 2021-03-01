@@ -12,8 +12,10 @@ function UserCreation(props) {
   return (
     <div>
       <p>Introduce yourself!</p>
-      <input type="text" onChange={handleInput} value={text} />
-      <button onClick={createUser}>create</button>
+      <div class="ui action input">
+        <input type="text" onChange={handleInput} value={text} placeholder="Your name here" style={{height:10, width: 300}}/>
+        <button onClick={createUser} class="ui blue button">create</button>
+      </div>
     </div>
   )
 }

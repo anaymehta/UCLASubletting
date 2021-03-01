@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import axios from 'axios';
 
 function CreateListing(props) {
   const [text, setText] = useState("");
@@ -33,23 +34,52 @@ function CreateListing(props) {
     setSqft("");
     setEmail("");
     setPhone("");
+    axios.post('http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/createListing', {
+      text: text,
+      beds: beds,
+      baths: baths,
+      sqft: sqft,
+      email: email,
+      phone: phone,
+    }).then(function (response) {
+    console.log(response.data);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
+  const handleSubmit = (e) => {
+    e.preventDefault();
   }
   return (
     <div>
-        <p>List your own apartment!</p>
+    <form class="ui form" onSubmit={handleSubmit}>
+      <div>
+        <label>List your own apartment!</label>
         <input type="text" onChange={handleText} value={text} />
-        <p>How many bedrooms does it have?</p>
+      </div>
+      <div>
+        <label>How many bedrooms does it have?</label>
         <input type="number" onChange={handleBeds} value={beds} />
-        <p>And how many bathrooms?</p>
+      </div>
+      <div>
+        <label>And how many bathrooms?</label>
         <input type="number" onChange={handleBaths} value={baths} />
-        <p>What about square footage?</p>
+      </div>
+      <div>
+        <label>What about square footage?</label>
         <input type="number" onChange={handleSqft} value={sqft} />
-        <p>What email address can we reach you at?</p>
+      </div>
+      <div>
+        <label>What email address can we reach you at?</label>
         <input type="text" onChange={handleEmail} value={email} />
-        <p>Could we get a phone number too?</p>
+      </div>
+      <div>
+        <label>Could we get a phone number too?</label>
         <input type="text" onChange={handlePhone} value={phone} />
-        <p>We're good to go, just hit post!</p>
-        <button onClick={createListing}>Post Listing</button>
+      </div>
+      <p></p>
+      <button onClick={createListing} class="ui inverted blue large button">Post Listing</button>
+    </form>
     </div>
   )
 }

@@ -67,19 +67,24 @@ function App() {
             <UserCreation createUser={createUser} /> :
             <CreateListing createListing={createListing} />
         }
+        <div class="ui stackable three column grid">
         {
           listings.map(( listing ) => {
-            return <Listing 
-                      author={listing.author} 
-                      body={listing.body} 
-                      beds={listing.beds} 
-                      baths={listing.baths} 
-                      sqft={listing.sqft} 
-                      email={listing.email} 
-                      phone={listing.phone} 
-            />
+            
+            return <div class="column">
+              <Listing 
+                author={listing.author} 
+                body={listing.body} 
+                beds={listing.beds} 
+                baths={listing.baths} 
+                sqft={listing.sqft} 
+                email={listing.email} 
+                phone={listing.phone} 
+              />
+            </div>
           })
         }
+        </div>
       </header>
     </div>
   );

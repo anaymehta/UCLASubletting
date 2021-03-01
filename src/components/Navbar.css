@@ -82,6 +82,7 @@
 }
 
 .sign-up-button {
+  font-family: "PT Sans", sans-serif;
   font-size: 20px;
   border-radius: 5px;
   outline: none;

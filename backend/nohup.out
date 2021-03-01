@@ -1,0 +1,8 @@
+(node:4789) Warning: Accessing non-existent property 'MongoError' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Server running at http://127.0.0.1:8080/
+(node:4789) DeprecationWarning: collection.insert is deprecated. Use insertOne, insertMany or bulkWrite instead.
+(node:4878) Warning: Accessing non-existent property 'MongoError' of module exports inside circular dependency
+(Use `node --trace-warnings ...` to show where the warning was created)
+Server running at http://127.0.0.1:8080/
+(node:4878) DeprecationWarning: collection.insert is deprecated. Use insertOne, insertMany or bulkWrite instead.

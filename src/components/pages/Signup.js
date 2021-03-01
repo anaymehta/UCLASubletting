@@ -42,7 +42,7 @@ export default class SignUp extends Component {
   }
   sendUserData() {
     axios
-      .post("http://3c19a98118cb.ngrok.io/signUp", {
+      .post("http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/signUp", {
         email: this.state.email,
         password: this.state.password,
       })

@@ -7,7 +7,7 @@ import UserCreation from './components/UserCreation'
 const defaultListings = [
   {
     author: "Anay",
-    body: "Landfair 424",
+    text: "Landfair 424",
     beds: 2,
     baths: 1,
     sqft: 800,
@@ -16,7 +16,7 @@ const defaultListings = [
   },
   {
     author: "Chloe",
-    body: "Strathmore 989",
+    text: "Strathmore 989",
     beds: 2,
     baths: 2,
     sqft: 1000,
@@ -25,7 +25,7 @@ const defaultListings = [
   },
   {
     author: "Kashi",
-    body: "Roebling 765",
+    text: "Roebling 765",
     beds: 1,
     baths: 1,
     sqft: 900,
@@ -38,11 +38,11 @@ function App() {
   const [listings, setListings] = useState(defaultListings)
   const [username, setUsername] = useState("")
 
-  const createListing = (newListingText, beds, baths, sqft, email, phone) => {
+  const createListing = (text, beds, baths, sqft, email, phone) => {
     const newListings = [...listings];
     newListings.push({
       author: username,
-      body: newListingText,
+      text: text,
       beds: beds,
       baths: baths,
       sqft: sqft,
@@ -74,7 +74,7 @@ function App() {
             return <div class="column">
               <Listing 
                 author={listing.author} 
-                body={listing.body} 
+                text={listing.text} 
                 beds={listing.beds} 
                 baths={listing.baths} 
                 sqft={listing.sqft} 

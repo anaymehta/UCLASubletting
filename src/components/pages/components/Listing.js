@@ -15,7 +15,7 @@ function Listing(props) {
   return (
     <div style={listingStyle}>
       <p>
-        {props.author} is selling: {props.body}
+        {props.author} is selling: {props.text}
       </p>
       <p> 
         {props.beds}B{props.baths}B, {props.sqft} Square Feet

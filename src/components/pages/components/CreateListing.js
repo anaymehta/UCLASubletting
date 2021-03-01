@@ -27,7 +27,6 @@ function CreateListing(props) {
     setPhone(e.target.value);
   }
   const createListing = () => {
-    props.createListing(text, beds, baths, sqft, email, phone);
     setText("");
     setBaths("");
     setBeds("");

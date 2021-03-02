@@ -1,5 +1,4 @@
 import {useState} from 'react';
-import 'semantic-ui-css/semantic.min.css'
 
 function Listing(props) {
   const listingStyle = {

@@ -1,4 +1,5 @@
 import "./App.css";
+import 'semantic-ui-css/semantic.min.css'
 import React, { useState } from "react";
 import Navbar from "./components/Navbar.js";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";

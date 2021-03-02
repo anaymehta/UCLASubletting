@@ -8,6 +8,7 @@ function CreateListing(props) {
   const [sqft, setSqft] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [description, setDescription] = useState("");
   const handleText = (e) => {
     setText(e.target.value);
   }
@@ -25,6 +26,9 @@ function CreateListing(props) {
   }
   const handlePhone = (e) => {
     setPhone(e.target.value);
+  }
+  const handleDescription = (e) => {
+    setDescription(e.target.value);
   }
   const createListing = () => {
     setText("");
@@ -75,6 +79,10 @@ function CreateListing(props) {
       <div>
         <label>Could we get a phone number too?</label>
         <input type="text" onChange={handlePhone} value={phone} />
+      </div>
+      <div>
+        <label>Please enter a description</label>
+        <textarea type="text" onChange={handleDescription} value={description} />
       </div>
       <p></p>
       <button onClick={createListing} class="ui inverted blue large button">Post Listing</button>

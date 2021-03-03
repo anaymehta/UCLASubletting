@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import axios from 'axios';
+import React, {Component} from 'react';
 
 function CreateListing(props) {
   const [text, setText] = useState("");
@@ -9,6 +10,8 @@ function CreateListing(props) {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [description, setDescription] = useState("");
+  const uploadedImage = React.useRef(null);
+  const imageUploader = React.useRef(null);
   const handleText = (e) => {
     setText(e.target.value);
   }
@@ -50,6 +53,18 @@ function CreateListing(props) {
       console.log(error);
     });
   }
+  const handleImageUpload = e => {
+      const [file] = e.target.files;
+      if (file) {
+        const reader = new FileReader();
+        const { current } = uploadedImage;
+        current.file = file;
+        reader.onload = e => {
+          current.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    };
   const handleSubmit = (e) => {
     e.preventDefault();
   }
@@ -84,6 +99,49 @@ function CreateListing(props) {
         <label>Please enter a description</label>
         <textarea type="text" onChange={handleDescription} value={description} />
       </div>
+
+      <div>
+        <label>Please upload a photo</label>
+      </div>
+
+       <div
+         style={{
+           display: "flex",
+           flexDirection: "column",
+           alignItems: "center",
+           justifyContent: "center"
+         }}
+       >
+         <input
+           type="file"
+           accept="image/*"
+           onChange={handleImageUpload}
+           ref={imageUploader}
+           style={{
+             display: "none"
+           }}
+         />
+         <div
+           style={{
+             height: "60px",
+             width: "60px",
+             border: "1px dashed black"
+           }}
+           onClick={() => imageUploader.current.click()}
+         >
+           <img
+             ref={uploadedImage}
+             style={{
+               width: "100%",
+               height: "100%",
+               position: "acsolute"
+             }}
+           />
+         </div>
+         Click to upload Image
+       </div>
+
+
       <p></p>
       <button onClick={createListing} class="ui inverted blue large button">Post Listing</button>
     </form>

@@ -1,7 +1,46 @@
+
+
+
+label{
+  color:#242424 !important;
+}
+
+.sign_up{
+  display:block;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 480px;
+}
+
+.sign_up_hidden{
+  display:none;
+}
+
+.sign_in{
+  
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 480px;
+}
+.sign_in_hidden{
+  display:none
+}
+
+
 .emailMsgHidden {
   display: none;
 }
 
 .emailMsgShown {
   display: block;
+}
+
+.btn-login{
+  display: flex;
+  justify-content: space-between;
+
 }

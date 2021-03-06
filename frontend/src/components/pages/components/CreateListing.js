@@ -34,6 +34,7 @@ function CreateListing(props) {
     setEmail("");
     setPhone("");
     axios.post('http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/createListing', {
+      author: props.author,
       text: text,
       beds: beds,
       baths: baths,

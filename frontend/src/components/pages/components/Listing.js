@@ -17,7 +17,7 @@ function Listing(props) {
         {props.author} is selling: {props.text}
       </p>
       <p> 
-        {props.beds}B{props.baths}B, {props.sqft} Square Feet
+        {props.beds} Bed {props.baths} Bath, {props.sqft} Square Feet
       </p>
       <p>
         Email: {props.email}

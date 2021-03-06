@@ -3,6 +3,7 @@ import Listing from './components/Listing'
 import {useState} from 'react'
 import CreateListing from './components/CreateListing'
 import UserCreation from './components/UserCreation'
+import axios from 'axios';
 
 const defaultListings = [
   {
@@ -36,37 +37,51 @@ const defaultListings = [
 
 function App() {
   const [listings, setListings] = useState(defaultListings)
-  const [username, setUsername] = useState("")
+  const [author, setAuthor] = useState("")
 
-  const createListing = (text, beds, baths, sqft, email, phone) => {
-    const newListings = [...listings];
-    newListings.push({
-      author: username,
+  const createListing = (author, text, beds, baths, sqft, email, phone) => {
+    const newListing = {
+      author: author,
       text: text,
       beds: beds,
       baths: baths,
       sqft: sqft,
       email: email,
       phone: phone,
-    })
-    setListings(newListings)
+    };
+    setListings(listings => [...listings, newListing]);
   }
 
-  const createUser = (newUsername) => {
-    setUsername(newUsername);
+  const createUser = (newAuthor) => {
+    setAuthor(newAuthor);
   }
 
+  const getListings = () => {
+    axios.get('http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/getListings')
+    .then(function (response) {
+      console.log(response.data);
+      const jsonListings = response.data;
+      jsonListings.map (( listing ) => {
+        createListing(listing.author, listing.text, listing.beds, listing.baths, listing.sqft, listing.email, listing.phone);
+      })
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>Hello{username !== "" && " " + username}!</p>
+        
+        <p>Hello{author !== "" && " " + author}!</p>
         <p>Welcome to UCLA Subletters!</p>
         {
-          username === "" ?
+          author === "" ?
             <UserCreation createUser={createUser} /> :
-            <CreateListing createListing={createListing} />
+            <CreateListing author={author} createListing={createListing} />
         }
+        <p></p>
+        <button onClick={getListings} class="ui inverted big blue button">Refresh Listings</button>
         <div class="ui stackable three column grid">
         {
           listings.map(( listing ) => {

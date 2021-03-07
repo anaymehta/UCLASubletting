@@ -70,11 +70,33 @@ app.post('/createListing', function (req, res) {
     })
 
   async function createListingDoc() {
-    let listingDoc = await listings.insert({"token": req.body.token, "text": req.body.text, "beds": req.body.beds, "baths": req.body.baths, "sqft": req.body.sqft, "email": req.body.email, "phone": req.body.phone});
+    let listingDoc = await listings.insert({"token": req.body.token, "text": req.body.text, "beds": req.body.beds, "baths": req.body.baths, "sqft": req.body.sqft, "email": req.body.email, "phone": req.body.phone, "description": req.body.description, "uploadedImage": req.body.uploadedImage});
     return 0
   }
 
 });
+
+app.get('/getListings', function (req, res) {
+  //Missing validation of user not existing
+  var listings = db.collection('listings');
+  returnAllListings()
+
+  async function returnAllListings() {
+    /*let listingDocs = await listings.find({});
+    return listingDocs */
+    listings.find({}).toArray(function (err, result) {
+        if (err) {
+            console.log(err);
+            res.send("Error finding all listings. Check Server logs.")
+        } else {
+            console.log("Returning : " + result);
+            res.send(result);
+        }
+    })
+  }
+
+});
+
 
 app.get('/', function (req, res) {
   res.send('Hello World');

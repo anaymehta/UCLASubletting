@@ -13,6 +13,7 @@ const defaultListings = [
     sqft: 800,
     email: "kierkegaard@ucla.edu",
     phone: "123456789",
+    description: "yo yo yo"
   },
   {
     author: "Chloe",
@@ -22,6 +23,7 @@ const defaultListings = [
     sqft: 1000,
     email: "camus@ucla.edu",
     phone: "987456789",
+    description: "what's up"
   },
   {
     author: "Kashi",
@@ -31,6 +33,7 @@ const defaultListings = [
     sqft: 900,
     email: "sartre@ucla.edu",
     phone: "567891234",
+    description: "how's it hanging"
   },
 ];
 

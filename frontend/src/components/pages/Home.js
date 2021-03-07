@@ -10,17 +10,18 @@ function Home() {
         <h1 font-family="serif" className="cheesySlogan">
           Find a Westwood Apartment Today!
         </h1>
-        <form action="./search-result" method="get">
-          <div className="searchbar">
-            <input
-              type="text"
-              className="searchbar-input"
-              placeholder="Enter Address"
-            ></input>
-            <button type="submit" className="searchbar-button">
-              <i class="fas fa-search"></i>
-            </button>
-          </div>
+
+        <form action="./search-result" method="GET" className="searchbar">
+          <input
+            type="text"
+            className="searchbar-input"
+            placeholder="Enter Address"
+            autocomplete="off"
+            name="addr"
+          ></input>
+          <button type="submit" className="searchbar-button">
+            <i class="fas fa-search"></i>
+          </button>
         </form>
       </div>
     </>

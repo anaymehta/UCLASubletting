@@ -1,6 +1,7 @@
 import './CreateListing.css'
 import {useState} from 'react';
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 function CreateListing(props) {
   const [text, setText] = useState("");
@@ -35,6 +36,8 @@ function CreateListing(props) {
     setEmail("");
     setPhone("");
     axios.post('http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/createListing', {
+      
+      token: Cookies.get('user'),
       author: props.author,
       text: text,
       beds: beds,

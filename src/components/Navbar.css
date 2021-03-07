@@ -131,6 +131,32 @@
 }
 
 
+.sign_up{
+  display:block;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 480px;
+}
+
+
+.sign_in{
+  
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 480px;
+}
+
+
+.btn-login{
+  display: flex;
+  justify-content: space-between;
+
+}
+
 label{
   color:#242424 !important;
 }
@@ -145,15 +171,6 @@ label{
   display:none;
 }
 
-
-.sign_in{
-  
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 100px;
-}
 .sign_in_hidden{
   display:none
 }

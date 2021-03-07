@@ -30,6 +30,7 @@ export default class Navbar extends Component {
 
     // sign up functions
     this.sendUserData = this.sendUserData.bind(this);
+    this.getUserData = this.getUserData.bind(this);
     this.setEmail = this.setEmail.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.showSignUp = this.showSignUp.bind(this);
@@ -94,11 +95,39 @@ export default class Navbar extends Component {
       )
       .then((response) => {
         console.log(response.data);
-        if (response.data == "User Created") {
+        if (response.data.status == "User Created") {
           //Go to the appropriate page
           this.handleClose();
           this.setEmailTaken(false);
-          Cookies.set("user", response.data);
+          Cookies.set("user", response.data.token);
+        } else {
+          //Appropriate error handling.
+          this.setEmailTaken(true);
+        }
+      })
+      .catch((error) => {
+        alert("Can't connect to server");
+        console.log(error);
+      });
+  }
+
+  
+  getUserData() {
+    axios
+      .post(
+        "http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/signIn",
+        {
+          email: this.state.email,
+          password: this.state.password,
+        }
+      )
+      .then((response) => {
+        console.log(response.data);
+        if (response.data.status == "User Created") {
+          //Go to the appropriate page
+          this.handleClose();
+          this.setEmailTaken(false);
+          Cookies.set("user", response.data.token);
         } else {
           //Appropriate error handling.
           this.setEmailTaken(true);
@@ -173,6 +202,7 @@ export default class Navbar extends Component {
           onClose={this.handleClose}
           closeIcon
         >
+          
           <Header>{this.state.showSignUp ? "Sign Up" : "Sign In"}</Header>
 
           <Modal.Content className="loginModal">
@@ -227,6 +257,7 @@ export default class Navbar extends Component {
                       type="text"
                       className="emailLogin"
                       placeholder="Enter Email"
+                      onChange={this.setEmail}
                     ></input>
                   </div>
                   <div class="field">
@@ -235,11 +266,12 @@ export default class Navbar extends Component {
                       type="password"
                       className="passwordLogin"
                       placeholder="Enter Password"
+                      onChange={this.setPassword}
                     ></input>
                   </div>
                   <div class="field">
                     <div className="btn-login">
-                      <button type="button" class="ui primary button">
+                      <button type="button" class="ui primary button" onClick={this.getUserData}>
                         Sign In
                       </button>
                       <button

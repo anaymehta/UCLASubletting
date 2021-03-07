@@ -4,21 +4,21 @@ import CreateListing from './components/CreateListing'
 import UserCreation from './components/UserCreation'
 
 function App() {
-  const [username, setUsername] = useState("")
+  const [author, setAuthor] = useState("")
 
-  const createUser = (newUsername) => {
-    setUsername(newUsername);
+  const createUser = (newAuthor) => {
+    setAuthor(newAuthor);
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>Hello{username !== "" && " " + username}!</p>
+        <p>Hello{author !== "" && " " + author}!</p>
         <p>Welcome to UCLA Subletters!</p>
         {
-          username === "" ?
+          author === "" ?
             <UserCreation createUser={createUser} /> :
-            <CreateListing />
+            <CreateListing author={author} />
         }
       </header>
     </div>

@@ -37,7 +37,6 @@ const defaultListings = [
 
 function App() {
   const [listings, setListings] = useState(defaultListings)
-  const [author, setAuthor] = useState("")
 
   const createListing = (author, text, beds, baths, sqft, email, phone) => {
     const newListing = {
@@ -50,10 +49,6 @@ function App() {
       phone: phone,
     };
     setListings(listings => [...listings, newListing]);
-  }
-
-  const createUser = (newAuthor) => {
-    setAuthor(newAuthor);
   }
 
   const getListings = () => {
@@ -72,15 +67,6 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        
-        <p>Hello{author !== "" && " " + author}!</p>
-        <p>Welcome to UCLA Subletters!</p>
-        {
-          author === "" ?
-            <UserCreation createUser={createUser} /> :
-            <CreateListing author={author} createListing={createListing} />
-        }
-        <p></p>
         <button onClick={getListings} class="ui inverted big blue button">Refresh Listings</button>
         <div class="ui stackable three column grid">
         {

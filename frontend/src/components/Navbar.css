@@ -5,6 +5,16 @@
   font-family: "PT Sans", sans-serif;
 }
 
+.closer {
+  display: flex;
+  justify-content: end;
+}
+
+.test {
+  display: flex;
+  justify-content: center;
+}
+
 .navbar {
   background: linear-gradient(
     90deg,
@@ -35,6 +45,11 @@
   align-items: center;
 }
 
+.navbar-logo:hover {
+  transition: 0.2s;
+  color: rgb(255, 255, 255) !important;
+}
+
 .fa-home {
   margin-left: 0.1rem;
   margin-bottom: 2px;
@@ -53,6 +68,8 @@
 
 .nav-item {
   height: 80px;
+
+  margin-top: 0px;
 }
 
 .nav-links {
@@ -62,11 +79,13 @@
   text-decoration: none;
   padding: 0.5rem 1rem;
   height: 100%;
+  margin-top: 0px;
 }
 
 .nav-links:hover {
   border-bottom: 4px solid rgb(108, 203, 255);
   transition: 0.2s ease-out;
+  color: #fff !important;
 }
 
 .fa-bars {
@@ -100,6 +119,70 @@
   background: #fff;
   color: #242424;
   transition: all 0.3s ease-out;
+}
+
+.loginModal {
+  height: 350px;
+}
+
+.sign_up {
+  display: block;
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 480px;
+}
+
+.sign_in {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 480px;
+}
+
+.btn-login {
+  display: flex;
+  justify-content: space-between;
+}
+
+label {
+  color: #242424 !important;
+}
+
+.page {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+.sign_up_hidden {
+  display: none;
+}
+
+.sign_in_hidden {
+  display: none;
+}
+
+.emailMsgHidden {
+  display: none;
+}
+
+.emailMsgShown {
+  display: block;
+  margin-top: 250px;
+  font-size: 100%;
+}
+
+.btn-login {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.emailInUse {
+  margin-top: 250px;
 }
 
 @media screen and (max-width: 960px) {
@@ -137,6 +220,7 @@
     padding: 2rem;
     width: 100%;
     display: table;
+    margin-top: 0px;
   }
 
   .nav-links:hover {
@@ -147,7 +231,8 @@
 
   .navbar-logo {
     position: absolute;
-    top: 0;
+    justify-content: end;
+    top: 10px;
     left: 0;
     transform: translate(9%, 45%);
   }
@@ -155,7 +240,7 @@
   .menu-icon {
     display: block;
     position: absolute;
-    top: 0;
+    top: 10px;
     right: 0;
     transform: translate(-100%, 45%);
     font-size: 2.2rem;
@@ -164,8 +249,8 @@
 
   .fa-times {
     color: rgb(255, 255, 255);
-    font-size: 2.4rem;
-    transform: translate(-22%);
+    font-size: 2.8rem;
+    margin-top: -5px;
   }
 
   .nav-links-squished-sign-up {

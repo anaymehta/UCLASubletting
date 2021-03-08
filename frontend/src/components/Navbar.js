@@ -18,7 +18,8 @@ export default class Navbar extends Component {
       password: "",
 
       isEmailTaken: false, // to display error msg
-      showSignUp: false, //
+      showSignUp: false,
+      loginWrongPassword:false,
 
       //login variables
     };
@@ -62,6 +63,18 @@ export default class Navbar extends Component {
     } else {
       this.setState({
         isEmailTaken: false,
+      });
+    }
+  }
+
+  setLoginWrongPassword(bool) {
+    if (bool === true) {
+      this.setState({
+        loginWrongPassword: true,
+      });
+    } else {
+      this.setState({
+        loginWrongPassword: false,
       });
     }
   }
@@ -126,11 +139,12 @@ export default class Navbar extends Component {
         if (response.data.status == "User Created") {
           //Go to the appropriate page
           this.handleClose();
-          this.setEmailTaken(false);
+          this.setLoginWrongPassword(false);
           Cookies.set("user", response.data.token);
         } else {
           //Appropriate error handling.
-          this.setEmailTaken(true);
+          this.setLoginWrongPassword(true);
+          
         }
       })
       .catch((error) => {
@@ -295,6 +309,17 @@ export default class Navbar extends Component {
             >
               <div class="ui negative message">
                 <p1>This email address is already being used.</p1>
+              </div>
+            </div>
+            <div
+              className={
+                this.state.loginWrongPassword && !this.state.showSignUp
+                  ? "emailMsgShown"
+                  : "emailMsgHidden"
+              }
+            >
+              <div class="ui negative message">
+                <p1>Wrong password.</p1>
               </div>
             </div>
           </Modal.Content>

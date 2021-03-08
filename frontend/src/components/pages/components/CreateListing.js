@@ -40,8 +40,8 @@ function CreateListing(props) {
     setEmail("");
     setPhone("");
     setDescription("");
+    // axios.post('http://127.0.0.1:8080/createListing', { // local server
     axios.post('http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/createListing', {
-      
       token: Cookies.get('user'),
       author: props.author,
       text: text,

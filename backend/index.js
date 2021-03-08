@@ -118,7 +118,7 @@ app.post('/createListing', function (req, res) {
     })
 
   async function createListingDoc() {
-    let listingDoc = await listings.insert({"token": req.body.token, "author": req.body.author, "text": req.body.text, "beds": req.body.beds, "baths": req.body.baths, "sqft": req.body.sqft, "email": req.body.email, "phone": req.body.phone});
+    let listingDoc = await listings.insert({"token": req.body.token, "author": req.body.author, "text": req.body.text, "beds": req.body.beds, "baths": req.body.baths, "sqft": req.body.sqft, "email": req.body.email, "phone": req.body.phone, "description": req.body.description});
     return 0
   }
 

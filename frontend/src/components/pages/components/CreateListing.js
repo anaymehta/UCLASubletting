@@ -91,12 +91,6 @@ function CreateListing(props) {
         <label>Please enter a description.</label>
         <textarea type="text" onChange={handleDescription} value={description} />
       </div>
-
-      <div>
-        <label>Please upload a photo.</label>
-      </div>
-
-
       <p></p>
       <button onClick={createListing} class="ui inverted blue large button">Post Listing</button>
     </form>

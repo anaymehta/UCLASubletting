@@ -1,4 +1,5 @@
 import {useState} from 'react';
+import axios from 'axios';
 
 function Listing(props) {
   const listingStyle = {
@@ -7,8 +8,17 @@ function Listing(props) {
     padding: "1em",
     marginTop: "1em",
   };
-  const [likes, setLikes] = useState(0);
-  const addLike = () => setLikes(likes + 1);
+  const [likes, setLikes] = useState(props.likes ? props.likes : 0); // backwards compatability
+  const addLike = () => {
+    setLikes(likes + 1);
+    axios.post('http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/addLike', {
+      name: props.text,
+    }).then(function (response) {
+    console.log(response.data);
+    }).catch(function (error) {
+      console.log(error);
+    });
+  }
   const [follow, setFollowing] = useState(false);
   const addFollow = () => setFollowing(true);
   return (

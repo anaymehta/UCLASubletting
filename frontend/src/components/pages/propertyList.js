@@ -8,7 +8,7 @@ import axios from 'axios';
 function App() {
   const [listings, setListings] = useState("")
 
-  const createListing = (author, text, beds, baths, sqft, email, phone, description) => {
+  const createListing = (author, text, beds, baths, sqft, email, phone, description, likes) => {
     const newListing = {
       author: author,
       text: text,
@@ -18,6 +18,7 @@ function App() {
       email: email,
       phone: phone,
       description: description,
+      likes: likes,
     };
     setListings(listings => [...listings, newListing]);
   }
@@ -29,7 +30,7 @@ function App() {
       console.log(response.data);
       const jsonListings = response.data;
       jsonListings.map (( listing ) => {
-        createListing(listing.author, listing.text, listing.beds, listing.baths, listing.sqft, listing.email, listing.phone, listing.description);
+        createListing(listing.author, listing.text, listing.beds, listing.baths, listing.sqft, listing.email, listing.phone, listing.description, listing.likes);
       })
     }).catch(function (error) {
       console.log(error);
@@ -55,7 +56,8 @@ function App() {
                   sqft={listing.sqft} 
                   email={listing.email} 
                   phone={listing.phone} 
-                  description={listing.description} 
+                  description={listing.description}
+                  likes={listing.likes}
                 />
               </div>
             })

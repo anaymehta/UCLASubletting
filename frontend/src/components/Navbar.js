@@ -236,10 +236,16 @@ export default class Navbar extends Component {
               </li>
               <li>
                 <Link
-                  className="nav-links-squished-sign-up"
+                  className={this.state.isLoggedIn ? "hidden" : "nav-links-squished-sign-up"}
                   onClick={this.handleOpen}
                 >
                   Sign In
+                </Link>
+                <Link
+                  className={ this.state.isLoggedIn ? "nav-links-squished-sign-out" : "hidden"}
+                  onClick={this.deleteCookie}
+                >
+                  Sign Out
                 </Link>
               </li>
             </ul>

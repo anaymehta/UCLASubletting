@@ -87,6 +87,11 @@
   display: none;
 }
 
+
+.nav-links-squished-sign-out {
+  display: none;
+}
+
 .menu-icon {
   display: none;
 }
@@ -289,7 +294,30 @@ label {
     transition: all 0.3s ease-out;
   }
 
+  
+  .nav-links-squished-sign-out {
+    display: block;
+    text-align: center;
+    margin: auto;
+    margin-top: 15px;
+    border-radius: 4px;
+    width: 80%;
+    text-decoration: none;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 14px 20px;
+    border: 1px solid #fff;
+    transition: all 0.3s ease-out;
+  }
+
   .nav-links-squished-sign-up:hover {
+    background: #fff;
+    color: #242424;
+    transition: 0.25s;
+  }
+
+  
+  .nav-links-squished-sign-out:hover {
     background: #fff;
     color: #242424;
     transition: 0.25s;

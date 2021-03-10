@@ -14,6 +14,7 @@ const defaultListings = [
     sqft: 800,
     email: "kierkegaard@ucla.edu",
     phone: "123456789",
+    description: "testing a really really really really long description to see if it messes up the page"
   },
   {
     author: "Chloe",
@@ -23,6 +24,7 @@ const defaultListings = [
     sqft: 1000,
     email: "camus@ucla.edu",
     phone: "987456789",
+    description: "yo yo yo"
   },
   {
     author: "Kashi",
@@ -32,13 +34,14 @@ const defaultListings = [
     sqft: 900,
     email: "sartre@ucla.edu",
     phone: "567891234",
+    description: "what's crackalackin"
   },
 ];
 
 function App() {
   const [listings, setListings] = useState(defaultListings)
 
-  const createListing = (author, text, beds, baths, sqft, email, phone) => {
+  const createListing = (author, text, beds, baths, sqft, email, phone, description) => {
     const newListing = {
       author: author,
       text: text,
@@ -47,6 +50,7 @@ function App() {
       sqft: sqft,
       email: email,
       phone: phone,
+      description: description
     };
     setListings(listings => [...listings, newListing]);
   }
@@ -57,7 +61,7 @@ function App() {
       console.log(response.data);
       const jsonListings = response.data;
       jsonListings.map (( listing ) => {
-        createListing(listing.author, listing.text, listing.beds, listing.baths, listing.sqft, listing.email, listing.phone);
+        createListing(listing.author, listing.text, listing.beds, listing.baths, listing.sqft, listing.email, listing.phone, listing.description);
       })
     }).catch(function (error) {
       console.log(error);
@@ -81,6 +85,7 @@ function App() {
                 sqft={listing.sqft} 
                 email={listing.email} 
                 phone={listing.phone} 
+                description={listing.description}
               />
             </div>
           })

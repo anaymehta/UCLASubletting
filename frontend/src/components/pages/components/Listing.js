@@ -25,6 +25,9 @@ function Listing(props) {
       <p>
         Phone: {props.phone}
       </p>
+      <p>
+        Description: {props.description}
+      </p>
       <div>
         <div class="ui labeled button">
           <button onClick={addLike} class="ui red button" tabindex="0">

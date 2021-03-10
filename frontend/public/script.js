@@ -13,13 +13,9 @@
     .then(function (response) {
       for (let i = 0; i < response.data.length; i++)
       {
-      	console.log(map.addMarker(response.data[i].text, 'http://i.stack.imgur.com/g672i.png', "sample text"));
+        map.addMarker(response.data[i].text, 'http://i.stack.imgur.com/g672i.png', response.data[i].description, response.data[i].beds, response.data[i].baths, response.data[i].sqft, response.data[i].email);
       }
     }).catch(function (error) {
       console.log(error);
     });
-
-    map.addMarker("10740 Dickson Ct, Los Angeles, CA 90095", 'images/powell.png', 'Study here');
-    map.addMarker("Los Angeles, CA 90095",'http://i.stack.imgur.com/g672i.png','Leeeell');
-    
 }(window, window.Mapster || (window.Mapster = {})));

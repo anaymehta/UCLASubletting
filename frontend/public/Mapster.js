@@ -143,7 +143,7 @@
 	    pan to the marker and center it. Also has a link so we can go to another
 	    page, I have google.com as a placeholder
 	    */
-	    addMarker: function(address, img, str) {
+	    addMarker: function(address, img, desc, bdr, bath, sqft, contact) {
 		this.gCoder.geocode({'address': address}, function(results, status) {
 		    if (status == google.maps.GeocoderStatus.OK) {
 			map.placeMarker({
@@ -153,7 +153,12 @@
 			    address: address,
 			    window: {
 				img: img,
-				str: `<b>${address}</b></br>` + str + `</br></br><a href="https://www.google.com">Sample Link</a>`,
+				str: `<b>${address}</b></br>` +
+				`${desc}</br>` + 
+				`${bdr} beds, ${bath} baths</br>` +
+				`${sqft} square feet</br>` +
+				`Contact: ${contact}` +
+				`</br></br><a href="https://www.google.com">Sample Link</a>`,
 			    }
 			})
 		    }

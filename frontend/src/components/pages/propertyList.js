@@ -4,6 +4,7 @@ import {useState} from 'react'
 import axios from 'axios';
 
 function App() {
+  document.getElementById("map-canvas").style.display = "none";
   const [listings, setListings] = useState([])
 
   const createListing = (author, text, beds, baths, sqft, email, phone, description, likes) => {

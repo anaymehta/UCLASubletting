@@ -133,6 +133,13 @@ export default class Navbar extends Component {
     this.setState({ password: event.target.value });
   }
   sendUserData() {
+    var emailString = this.state.email;
+    var indexOfAt = emailString.indexOf('@');
+    var charAfter = emailString.charAt(indexOfAt+1);
+    if(charAfter != 'u') {
+      alert('You must sign-up using a UCLA email');
+      return;
+    }
     axios
       .post(
         "http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/signUp",

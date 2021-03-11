@@ -45,8 +45,8 @@ function App() {
       <header className="App-header">
       {
         // if no listings are currently visible, allow user to ask for them from the server, else display listings
-        listings.length === 0 ?
-          <button onClick={getSearchResults} class="ui inverted big blue button">Click here to view all listings!</button> :
+        listings.length === 0 && !getSearchResults()?
+          <p>Sorry, we couldn't find any listings by that name :(</p> :
           <div class="ui stackable three column grid">
           {
             listings.map(( listing ) => {

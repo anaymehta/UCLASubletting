@@ -134,6 +134,23 @@ app.post('/addLike', function(req, res) {
         }
 });
 
+app.post('/searchListing', function(req, res) {
+        var listings = db.collection('listings');
+        console.log("Searching: " + req.body.search);
+        searchListings();
+        async function searchListings() {
+        listings.find({"text": new RegExp(req.body.search)}).toArray(function (err, result) {
+                if (err) {
+                        console.log(err);
+                        res.send("Error searching the listings: " + err);
+                } else {
+                        console.log("Returning search results: " + result);
+                        res.send(result);
+                }
+        })
+        }
+})
+
 app.get('/getListings', function (req, res) {
   //Missing validation of user not existing
   var listings = db.collection('listings');

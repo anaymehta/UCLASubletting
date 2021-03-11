@@ -1,12 +1,10 @@
 import './propertyList.css';
 import Listing from './components/Listing'
 import {useState} from 'react'
-import CreateListing from './components/CreateListing'
-import UserCreation from './components/UserCreation'
 import axios from 'axios';
 
 function App() {
-  const [listings, setListings] = useState("")
+  const [listings, setListings] = useState([])
 
   const createListing = (author, text, beds, baths, sqft, email, phone, description, likes) => {
     const newListing = {
@@ -41,9 +39,9 @@ function App() {
     <div className="App">
       <header className="App-header">
       {
-        // if no listings are currently visible, allow user to ask for them from the server, else display listings
-        listings.length === 0 ?
-          <button onClick={getListings} class="ui inverted big blue button">Click here to view all listings!</button> :
+        // if no listings are currently available, ask for them from the server, else display listings
+        listings.length === 0 && !getListings()?
+          <p>No Listings Found :(</p> :
           <div class="ui stackable three column grid">
           {
             listings.map(( listing ) => {

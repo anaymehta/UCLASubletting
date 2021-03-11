@@ -18,7 +18,8 @@ export default class Navbar extends Component {
       password: "",
 
       isEmailTaken: false, // to display error msg
-      showSignUp: false, //
+      showSignUp: false,
+      loginWrongPassword:false,
 
       //login variables
     };
@@ -27,6 +28,7 @@ export default class Navbar extends Component {
     this.closeMobileMenu = this.closeMobileMenu.bind(this);
     this.handleOpen = this.handleOpen.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.deleteCookie = this.deleteCookie.bind(this);
 
     // sign up functions
     this.sendUserData = this.sendUserData.bind(this);
@@ -34,7 +36,23 @@ export default class Navbar extends Component {
     this.setEmail = this.setEmail.bind(this);
     this.setPassword = this.setPassword.bind(this);
     this.showSignUp = this.showSignUp.bind(this);
+    this.setLogin = this.setLogin.bind(this);
+
+    
+    if((Cookies.get('user')) ==null)
+    {
+      this.state = {
+        isLoggedIn :false
+      }
+    }
+    else
+    {
+      this.state ={
+        isLoggedIn: true
+      }
+    }
   }
+
 
   //navbar functions
   handleOpen = () => this.setState({ modalOpen: true });
@@ -50,6 +68,12 @@ export default class Navbar extends Component {
       click: false,
     });
   }
+  deleteCookie(){
+    Cookies.remove('user');
+    this.setState(
+      {isLoggedIn:false}
+    )
+  }
 
   // sign up functions section:
 
@@ -62,6 +86,30 @@ export default class Navbar extends Component {
     } else {
       this.setState({
         isEmailTaken: false,
+      });
+    }
+  }
+
+  setLogin(bool){
+    if (bool === true) {
+      this.setState({
+        isLoggedIn: true,
+      });
+    } else {
+      this.setState({
+        isLoggedIn: false,
+      });
+    }
+  }
+
+  setLoginWrongPassword(bool) {
+    if (bool === true) {
+      this.setState({
+        loginWrongPassword: true,
+      });
+    } else {
+      this.setState({
+        loginWrongPassword: false,
       });
     }
   }
@@ -100,6 +148,7 @@ export default class Navbar extends Component {
           this.handleClose();
           this.setEmailTaken(false);
           Cookies.set("user", response.data.token);
+          this.setLogin(true);
         } else {
           //Appropriate error handling.
           this.setEmailTaken(true);
@@ -111,6 +160,7 @@ export default class Navbar extends Component {
       });
   }
 
+ 
   
   getUserData() {
     axios
@@ -126,11 +176,14 @@ export default class Navbar extends Component {
         if (response.data.status == "User Created") {
           //Go to the appropriate page
           this.handleClose();
-          this.setEmailTaken(false);
+          this.setLoginWrongPassword(false);
           Cookies.set("user", response.data.token);
+          this.setLogin(true);
+          
         } else {
           //Appropriate error handling.
-          this.setEmailTaken(true);
+          this.setLoginWrongPassword(true);
+          
         }
       })
       .catch((error) => {
@@ -183,16 +236,25 @@ export default class Navbar extends Component {
               </li>
               <li>
                 <Link
-                  className="nav-links-squished-sign-up"
+                  className={this.state.isLoggedIn ? "hidden" : "nav-links-squished-sign-up"}
                   onClick={this.handleOpen}
                 >
                   Sign In
                 </Link>
+                <Link
+                  className={ this.state.isLoggedIn ? "nav-links-squished-sign-out" : "hidden"}
+                  onClick={this.deleteCookie}
+                >
+                  Sign Out
+                </Link>
               </li>
             </ul>
 
-            <button className="sign-up-button" onClick={this.handleOpen}>
+            <button className={this.state.isLoggedIn ? "hidden" : "sign-up-button"} onClick={this.handleOpen}>
               Sign In
+            </button>
+            <button className={ this.state.isLoggedIn ? "sign-out-button" : "hidden"} onClick={this.deleteCookie}>
+              Sign Out
             </button>
           </div>
         </nav>
@@ -295,6 +357,17 @@ export default class Navbar extends Component {
             >
               <div class="ui negative message">
                 <p1>This email address is already being used.</p1>
+              </div>
+            </div>
+            <div
+              className={
+                this.state.loginWrongPassword && !this.state.showSignUp
+                  ? "emailMsgShown"
+                  : "emailMsgHidden"
+              }
+            >
+              <div class="ui negative message">
+                <p1>Wrong password.</p1>
               </div>
             </div>
           </Modal.Content>

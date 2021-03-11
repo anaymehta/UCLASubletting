@@ -1,8 +1,6 @@
 import './propertyList.css';
 import Listing from './components/Listing'
 import {useState} from 'react'
-import CreateListing from './components/CreateListing'
-import UserCreation from './components/UserCreation'
 import axios from 'axios';
 
 function App() {

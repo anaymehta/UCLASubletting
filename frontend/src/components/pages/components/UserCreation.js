@@ -21,7 +21,7 @@ function UserCreation(props) {
       <p></p>
       <div>
       <span class="tab1"></span>
-        <button onClick={createUser} class="ui inverted blue large button">create</button>
+        <button onClick={createUser} class="ui inverted blue large button">continue</button>
       </div>
     </div>
   )

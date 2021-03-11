@@ -283,7 +283,7 @@ export default class Navbar extends Component {
               >
                 <form class="ui form">
                   <div class="field">
-                    <label>Email</label>
+                    <p1>Email</p1>
                     <input
                       type="text"
                       className="email"
@@ -292,7 +292,7 @@ export default class Navbar extends Component {
                     ></input>
                   </div>
                   <div class="field">
-                    <label>Password</label>
+                    <p1>Password</p1>
                     <input
                       type="password"
                       className="password"
@@ -323,7 +323,7 @@ export default class Navbar extends Component {
               >
                 <form class="ui form">
                   <div class="field">
-                    <label>Email</label>
+                    <p1>Email</p1>
                     <input
                       type="text"
                       className="emailLogin"
@@ -332,7 +332,7 @@ export default class Navbar extends Component {
                     ></input>
                   </div>
                   <div class="field">
-                    <label>Password</label>
+                    <p1>Password</p1>
                     <input
                       type="password"
                       className="passwordLogin"

@@ -173,7 +173,7 @@ export default class Navbar extends Component {
       )
       .then((response) => {
         console.log(response.data);
-        if (response.data.status == "User Created") {
+        if (response.data.status == "User Authenticated") {
           //Go to the appropriate page
           this.handleClose();
           this.setLoginWrongPassword(false);

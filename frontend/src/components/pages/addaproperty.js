@@ -4,6 +4,7 @@ import CreateListing from './components/CreateListing'
 import UserCreation from './components/UserCreation'
 
 function App() {
+  document.getElementById("map-canvas").style.display = "none";
   const [author, setAuthor] = useState("")
 
   const createUser = (newAuthor) => {

@@ -234,6 +234,15 @@ export default class Navbar extends Component {
                   Property List
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link
+                  to="/map"
+                  className="nav-links"
+                  onClick={this.closeMobileMenu}
+                >
+                  Map
+                </Link>
+              </li>
               <li>
                 <Link
                   className={this.state.isLoggedIn ? "hidden" : "nav-links-squished-sign-up"}

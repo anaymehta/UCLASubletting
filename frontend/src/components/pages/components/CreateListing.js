@@ -65,34 +65,40 @@ function CreateListing(props) {
     <form class="ui form" onSubmit={handleSubmit}>
       <div>
         <label>Enter the name of your listing.</label>
-        <input type="text" onChange={handleText} value={text} />
-      </div>
-      <div>
-        <label>How many bedrooms?</label>
-        <input type="number" onChange={handleBeds} value={beds} />
-      </div>
-      <div>
-        <label>How many bathrooms?</label>
-        <input type="number" onChange={handleBaths} value={baths} />
-      </div>
-      <div>
-        <label>How many square feet?</label>
-        <input type="number" onChange={handleSqft} value={sqft} />
-      </div>
-      <div>
-        <label>What is your email address?</label>
-        <input type="text" onChange={handleEmail} value={email} />
-      </div>
-      <div>
-        <label>What is your phone number?</label>
-        <input type="text" onChange={handlePhone} value={phone} />
-      </div>
-      <div>
-        <label>Please enter a description.</label>
-        <textarea type="text" onChange={handleDescription} value={description} />
+        <input type="text" placeholder="Listing name" onChange={handleText} value={text} />
       </div>
       <p></p>
+      <div class="two fields">
+        <div class="field"><label>How many bedrooms?</label>
+        <div class="ui input"><input type="text" placeholder="Enter a number" onChange={handleBeds} value={beds} />
+        </div></div>
+        <div class="field"><label>How many bathrooms?</label>
+        <div class="ui input"><input type="text" placeholder="Enter a number" onChange={handleBaths} value={baths} />
+        </div></div></div>
+      <div>
+        <label>How many square feet?</label>
+        <input type="text" placeholder="Enter a number" onChange={handleSqft} value={sqft} />
+      </div>
+      <p></p>
+      <div>
+        <label>What is your email address?</label>
+        <input type="text" placeholder="joebruin@gmail.com" onChange={handleEmail} value={email} />
+      </div>
+      <p></p>
+      <div>
+        <label>What is your phone number?</label>
+        <input type="text" placeholder="111-111-1111" onChange={handlePhone} value={phone} />
+      </div>
+      <p></p>
+      <div>
+        <label>Please enter a description.</label>
+        <textarea type="text" placeholder="Description" onChange={handleDescription} value={description} />
+      </div>
+
+      <p></p>
+      <span class="tab3"></span>
       <button onClick={createListing} class="ui inverted blue large button">Post Listing</button>
+      <p></p>
     </form>
     </div>
   )

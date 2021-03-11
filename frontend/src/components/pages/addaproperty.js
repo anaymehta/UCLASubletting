@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>Hello{author !== "" && " " + author}!</p>
-        <p>Welcome to UCLA Subletters!</p>
+      <p></p> <p></p>
+        <p>Hello{author !== "" && " " + author}! Welcome to UCLA Subletters! </p>
         {
           author === "" ?
             <UserCreation createUser={createUser} /> :

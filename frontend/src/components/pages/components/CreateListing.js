@@ -1,3 +1,4 @@
+import './CreateListing.css'
 import {useState} from 'react';
 import axios from 'axios';
 import Cookies from "js-cookie";
@@ -9,6 +10,7 @@ function CreateListing(props) {
   const [sqft, setSqft] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
+  const [description, setDescription] = useState("");
   const handleText = (e) => {
     setText(e.target.value);
   }
@@ -27,6 +29,9 @@ function CreateListing(props) {
   const handlePhone = (e) => {
     setPhone(e.target.value);
   }
+  const handleDescription = (e) => {
+    setDescription(e.target.value);
+  }
   const createListing = () => {
     setText("");
     setBaths("");
@@ -34,8 +39,9 @@ function CreateListing(props) {
     setSqft("");
     setEmail("");
     setPhone("");
+    setDescription("");
+    // axios.post('http://127.0.0.1:8080/createListing', { // local server
     axios.post('http://ec2-18-218-184-96.us-east-2.compute.amazonaws.com:8080/createListing', {
-      
       token: Cookies.get('user'),
       author: props.author,
       text: text,
@@ -44,6 +50,7 @@ function CreateListing(props) {
       sqft: sqft,
       email: email,
       phone: phone,
+      description: description,
     }).then(function (response) {
     console.log(response.data);
     }).catch(function (error) {
@@ -57,31 +64,41 @@ function CreateListing(props) {
     <div>
     <form class="ui form" onSubmit={handleSubmit}>
       <div>
-        <label>List your own apartment!</label>
-        <input type="text" onChange={handleText} value={text} />
-      </div>
-      <div>
-        <label>How many bedrooms does it have?</label>
-        <input type="number" onChange={handleBeds} value={beds} />
-      </div>
-      <div>
-        <label>And how many bathrooms?</label>
-        <input type="number" onChange={handleBaths} value={baths} />
-      </div>
-      <div>
-        <label>What about square footage?</label>
-        <input type="number" onChange={handleSqft} value={sqft} />
-      </div>
-      <div>
-        <label>What email address can we reach you at?</label>
-        <input type="text" onChange={handleEmail} value={email} />
-      </div>
-      <div>
-        <label>Could we get a phone number too?</label>
-        <input type="text" onChange={handlePhone} value={phone} />
+        <label>Enter the name of your listing.</label>
+        <input type="text" placeholder="Listing name" onChange={handleText} value={text} />
       </div>
       <p></p>
+      <div class="two fields">
+        <div class="field"><label>How many bedrooms?</label>
+        <div class="ui input"><input type="text" placeholder="Enter a number" onChange={handleBeds} value={beds} />
+        </div></div>
+        <div class="field"><label>How many bathrooms?</label>
+        <div class="ui input"><input type="text" placeholder="Enter a number" onChange={handleBaths} value={baths} />
+        </div></div></div>
+      <div>
+        <label>How many square feet?</label>
+        <input type="text" placeholder="Enter a number" onChange={handleSqft} value={sqft} />
+      </div>
+      <p></p>
+      <div>
+        <label>What is your email address?</label>
+        <input type="text" placeholder="joebruin@gmail.com" onChange={handleEmail} value={email} />
+      </div>
+      <p></p>
+      <div>
+        <label>What is your phone number?</label>
+        <input type="text" placeholder="111-111-1111" onChange={handlePhone} value={phone} />
+      </div>
+      <p></p>
+      <div>
+        <label>Please enter a description.</label>
+        <textarea type="text" placeholder="Description" onChange={handleDescription} value={description} />
+      </div>
+
+      <p></p>
+      <span class="tab3"></span>
       <button onClick={createListing} class="ui inverted blue large button">Post Listing</button>
+      <p></p>
     </form>
     </div>
   )

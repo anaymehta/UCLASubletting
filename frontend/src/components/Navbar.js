@@ -149,7 +149,6 @@ export default class Navbar extends Component {
           this.setEmailTaken(false);
           Cookies.set("user", response.data.token);
           this.setLogin(true);
-          
         } else {
           //Appropriate error handling.
           this.setEmailTaken(true);
@@ -161,6 +160,7 @@ export default class Navbar extends Component {
       });
   }
 
+ 
   
   getUserData() {
     axios

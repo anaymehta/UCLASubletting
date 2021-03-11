@@ -8,13 +8,20 @@ function UserCreation(props) {
   const createUser = () => {
     props.createUser(text);
     setText("");
-  }
+  } 
   return (
     <div>
-      <p>Introduce yourself!</p>
-      <div class="ui action input">
-        <input type="text" onChange={handleInput} value={text} placeholder="Your name here" style={{height:10, width: 300}}/>
-        <button onClick={createUser} class="ui blue button">create</button>
+      <span class="tab2"></span>
+      Introduce yourself!
+      <p></p><p></p>
+      <div class="ui input">
+      <p></p><p></p>
+        <input type="text" onChange={handleInput} value={text} placeholder="Your name here" style={{height:10, width: 320}}input/>
+      </div>
+      <p></p>
+      <div>
+      <span class="tab1"></span>
+        <button onClick={createUser} class="ui inverted blue large button">create</button>
       </div>
     </div>
   )

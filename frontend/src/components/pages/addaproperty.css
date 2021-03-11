@@ -16,3 +16,18 @@
 .App-link {
   color: #61dafb;
 }
+
+.tab1 { 
+  display:inline-block; 
+  margin-left: 110px; 
+}
+
+.tab2 { 
+  display:inline-block; 
+  margin-left: 75px; 
+}
+
+.tab3 { 
+  display:inline-block; 
+  margin-left: 110px; 
+}

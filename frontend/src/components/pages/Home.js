@@ -16,7 +16,7 @@ function Home() {
           <input
             type="text"
             className="searchbar-input"
-            placeholder="Enter Address"
+            placeholder="Search"
             autocomplete="off"
             name="addr"
           ></input>

@@ -13,7 +13,7 @@
     .then(function (response) {
       for (let i = 0; i < response.data.length; i++)
       {
-        map.addMarker(response.data[i].text, 'http://i.stack.imgur.com/g672i.png', response.data[i].description, response.data[i].beds, response.data[i].baths, response.data[i].sqft, response.data[i].email);
+        map.addMarker(response.data[i].text, './images/bruinLogo2.png', response.data[i].description, response.data[i].beds, response.data[i].baths, response.data[i].sqft, response.data[i].email);
       }
     }).catch(function (error) {
       console.log(error);

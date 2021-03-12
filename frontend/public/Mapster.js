@@ -157,8 +157,7 @@
 				`${desc}</br>` + 
 				`${bdr} beds, ${bath} baths</br>` +
 				`${sqft} square feet</br>` +
-				`Contact: ${contact}` +
-				`</br></br><a href="https://www.google.com">Sample Link</a>`,
+				`Contact: ${contact}`,
 			    }
 			})
 		    }
